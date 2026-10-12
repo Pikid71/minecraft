@@ -1,5 +1,141 @@
-body{
-    background: black;
-    color: white;
-    font-family: roboto monospace;
+/* ==========================================================================
+   Minecraft Wiki Style Sheet (style.css)
+   Uses loaded font 'Roboto Mono' with a clean, gaming-inspired dark palette.
+   ========================================================================== */
+
+/* --- CSS Variables & Theme Setup --- */
+:root {
+  --bg-dark: #121517;
+  --card-bg: #1e2225;
+  --accent-green: #52a43a;
+  --accent-green-hover: #62be45;
+  --text-main: #e0e6ed;
+  --text-muted: #9da8b3;
+  --border-color: #2e353b;
+  --font-mono: 'Roboto Mono', monospace;
+}
+
+/* --- Base & Reset Rules --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  line-height: 1.7;
+  padding: 2rem 1rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* --- Typography & Headings --- */
+h1, h2, h3 {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: var(--accent-green);
+  border-bottom: 3px solid var(--accent-green);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--accent-green);
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #8ed274;
+}
+
+p {
+  margin-bottom: 1.25rem;
+  color: var(--text-main);
+}
+
+/* --- Links & Buttons --- */
+a {
+  color: var(--accent-green);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px dashed var(--accent-green);
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-green-hover);
+  border-bottom-style: solid;
+  background-color: rgba(82, 164, 58, 0.1);
+  border-radius: 2px;
+}
+
+/* --- List Styling --- */
+ul, ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+/* Styling for nested lists (e.g., game mode details) */
+li > ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  background-color: var(--card-bg);
+  padding: 0.75rem 0.75rem 0.75rem 2rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+/* Controls list styling */
+h3 + p > ul {
+  background-color: var(--card-bg);
+  padding: 1rem 1rem 1rem 2.2rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  margin-top: 0.75rem;
+}
+
+/* --- Footer --- */
+footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem 0.75rem;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
 }
