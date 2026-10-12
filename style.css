@@ -1,17 +1,18 @@
 /* ==========================================================================
    Minecraft Wiki Style Sheet (style.css)
-   Uses loaded font 'Roboto Mono' with a clean, gaming-inspired dark palette.
+   Pixel-Art / Minecraft UI Theme using inset box-shadows & hard edges
    ========================================================================== */
 
 /* --- CSS Variables & Theme Setup --- */
 :root {
-  --bg-dark: #121517;
-  --card-bg: #1e2225;
-  --accent-green: #52a43a;
-  --accent-green-hover: #62be45;
-  --text-main: #e0e6ed;
-  --text-muted: #9da8b3;
-  --border-color: #2e353b;
+  --bg-dark: #1e1e1e;
+  --panel-bg: #c6c6c6;
+  --panel-dark: #3c3c3c;
+  --panel-text: #202020;
+  --mc-green: #55ff55;
+  --mc-dark-green: #00aa00;
+  --mc-yellow: #ffff55;
+  --text-light: #ffffff;
   --font-mono: 'Roboto Mono', monospace;
 }
 
@@ -20,122 +21,156 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  image-rendering: pixelated; /* Ensures crisp pixel rendering */
 }
 
 body {
   background-color: var(--bg-dark);
-  color: var(--text-main);
+  /* Dirt block pixelated pattern background */
+  background-image: radial-gradient(#2d2d2d 15%, transparent 16%), radial-gradient(#141414 15%, transparent 16%);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
+  color: var(--text-light);
   font-family: var(--font-mono);
-  line-height: 1.7;
+  line-height: 1.6;
   padding: 2rem 1rem;
-  max-width: 860px;
+  max-width: 880px;
   margin: 0 auto;
 }
 
 /* --- Typography & Headings --- */
 h1, h2, h3 {
-  color: #ffffff;
   font-weight: 700;
+  text-shadow: 2px 2px 0px #000000;
 }
 
 h1 {
-  font-size: 2.2rem;
-  color: var(--accent-green);
-  border-bottom: 3px solid var(--accent-green);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 2rem;
+  color: var(--mc-green);
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background-color: var(--panel-dark);
+  
+  /* Blocky 3D Pixel Border */
+  border: 4px solid #000;
+  box-shadow: 
+    inset -4px -4px 0px #1e1e1e,
+    inset 4px 4px 0px #6e6e6e;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  color: var(--mc-yellow);
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  padding-left: 0.75rem;
-  border-left: 4px solid var(--accent-green);
+  padding: 0.5rem 0.75rem;
+  background-color: #2a2a2a;
+  
+  /* Blocky Pixel Border */
+  border: 3px solid #000;
+  box-shadow: 
+    inset -3px -3px 0px #141414,
+    inset 3px 3px 0px #4a4a4a;
 }
 
 h3 {
   font-size: 1.15rem;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #8ed274;
+  color: var(--mc-green);
 }
 
 p {
   margin-bottom: 1.25rem;
-  color: var(--text-main);
 }
 
-/* --- Links & Buttons --- */
+/* --- Links (Minecraft Button Style) --- */
 a {
-  color: var(--accent-green);
+  color: #000000;
+  background-color: var(--panel-bg);
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
   text-decoration: none;
-  font-weight: 600;
-  border-bottom: 1px dashed var(--accent-green);
-  transition: all 0.2s ease;
+  font-weight: bold;
+  
+  /* Classic Minecraft Button Bevel */
+  border: 2px solid #000;
+  box-shadow: 
+    inset -2px -2px 0px #555555,
+    inset 2px 2px 0px #ffffff;
 }
 
 a:hover {
-  color: var(--accent-green-hover);
-  border-bottom-style: solid;
-  background-color: rgba(82, 164, 58, 0.1);
-  border-radius: 2px;
+  background-color: #d8d8d8;
+  color: var(--mc-dark-green);
+  box-shadow: 
+    inset -2px -2px 0px #ffffff,
+    inset 2px 2px 0px #555555; /* Inverted click effect */
 }
 
-/* --- List Styling --- */
+/* --- List Styling & Container Boxes --- */
 ul, ol {
   margin-left: 1.5rem;
   margin-bottom: 1.5rem;
-  padding-left: 0.5rem;
 }
 
 li {
-  margin-bottom: 0.5rem;
-  color: var(--text-main);
+  margin-bottom: 0.4rem;
 }
 
-/* Styling for nested lists (e.g., game mode details) */
+/* Container for Controls and Nested Lists (Minecraft Inventory Slot Panel Style) */
+h3 + p > ul,
 li > ol {
-  margin-top: 0.5rem;
-  margin-bottom: 0.75rem;
-  background-color: var(--card-bg);
-  padding: 0.75rem 0.75rem 0.75rem 2rem;
-  border-radius: 6px;
-  border: 1px solid var(--border-color);
+  background-color: var(--panel-dark);
+  padding: 1rem 1rem 1rem 2.5rem;
+  margin-top: 0.75rem;
+  color: var(--text-light);
+  
+  /* Inset "Slot" Pixel Border */
+  border: 4px solid #000;
+  box-shadow: 
+    inset 4px 4px 0px #141414,
+    inset -4px -4px 0px #555555;
 }
 
-/* Controls list styling */
-h3 + p > ul {
-  background-color: var(--card-bg);
-  padding: 1rem 1rem 1rem 2.2rem;
-  border-radius: 6px;
-  border: 1px solid var(--border-color);
-  margin-top: 0.75rem;
+/* Specific adjustment for nested lists */
+li > ol {
+  margin-bottom: 1rem;
+  background-color: #252525;
 }
 
 /* --- Footer --- */
 footer {
   margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-color);
+  padding: 1rem;
+  background-color: var(--panel-dark);
   text-align: center;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: #aaa;
+  
+  /* Blocky Border */
+  border: 3px solid #000;
+  box-shadow: 
+    inset -3px -3px 0px #141414,
+    inset 3px 3px 0px #555555;
 }
 
-/* --- Responsive Adjustments --- */
+footer p {
+  margin-bottom: 0;
+}
+
+/* --- Responsive Layout --- */
 @media (max-width: 600px) {
   body {
-    padding: 1rem 0.75rem;
+    padding: 0.75rem;
   }
-  
+
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
-  
+
   h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 }
